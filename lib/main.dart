@@ -30,16 +30,8 @@ class DicePage extends StatelessWidget {
         // flex 속성을 통해
         // sibling끼리 가로나 세로를 차지할 비율(ratio) 설정 가능
         // default는 1:1:1...
-        Expanded(
-          child: Image(
-            image: AssetImage('images/dice1.png'),
-          ),
-        ),
-        Expanded(
-          child: Image(
-            image: AssetImage('images/dice1.png'),
-          ),
-        ),
+        Expanded(child: Image.asset('images/dice1.png')),
+        Expanded(child: Image.asset('images/dice1.png')),
       ],
     );
   }
