@@ -37,14 +37,18 @@ class DicePage extends StatelessWidget {
           // default는 1:1:1...
           Expanded(
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                print('left button got pressed');
+              },
               child: Image.asset('images/dice1.png'),
               style: TextButton.styleFrom(padding: EdgeInsets.all(16.0)),
             ),
           ),
           Expanded(
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                print('right button got pressed');
+              },
               child: Image.asset('images/dice1.png'),
               style: TextButton.styleFrom(padding: EdgeInsets.all(16.0)),
             ),
