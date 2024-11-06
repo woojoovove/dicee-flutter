@@ -19,6 +19,10 @@ class DicePage extends StatelessWidget {
   // StatelessWidget의 "build" method는
   // 코드 저장 / hot reload를 할 때마다
   // refresh 되어 개발할 때 편리하다.
+
+  // intention action : put the cursor on the widget
+  // and click light bulb
+  // or alt + enter
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -31,8 +35,16 @@ class DicePage extends StatelessWidget {
           // flex 속성을 통해
           // sibling끼리 가로나 세로를 차지할 비율(ratio) 설정 가능
           // default는 1:1:1...
-          Expanded(child: Image.asset('images/dice1.png')),
-          Expanded(child: Image.asset('images/dice1.png')),
+          Expanded(
+              child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Image.asset('images/dice1.png'),
+          )),
+          Expanded(
+              child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Image.asset('images/dice1.png'),
+          )),
         ],
       ),
     );
