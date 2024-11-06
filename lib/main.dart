@@ -36,15 +36,19 @@ class DicePage extends StatelessWidget {
           // sibling끼리 가로나 세로를 차지할 비율(ratio) 설정 가능
           // default는 1:1:1...
           Expanded(
-              child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Image.asset('images/dice1.png'),
-          )),
+            child: TextButton(
+              onPressed: () {},
+              child: Image.asset('images/dice1.png'),
+              style: TextButton.styleFrom(padding: EdgeInsets.all(16.0)),
+            ),
+          ),
           Expanded(
-              child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Image.asset('images/dice1.png'),
-          )),
+            child: TextButton(
+              onPressed: () {},
+              child: Image.asset('images/dice1.png'),
+              style: TextButton.styleFrom(padding: EdgeInsets.all(16.0)),
+            ),
+          ),
         ],
       ),
     );
