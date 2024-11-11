@@ -15,7 +15,18 @@ void main() {
   );
 }
 
-class DicePage extends StatelessWidget {
+// StatelessWidget is immutable.
+// if you declare a mutable variable inside s StatelessWidget
+// you will see a warning saying statelesswidget is not meant to be changed.
+
+class DicePage extends StatefulWidget {
+  const DicePage({super.key});
+
+  @override
+  State<DicePage> createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
   // StatelessWidget의 "build" method는
   // 코드 저장 / hot reload를 할 때마다
   // refresh 되어 개발할 때 편리하다.
