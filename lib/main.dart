@@ -34,6 +34,10 @@ class _DicePageState extends State<DicePage> {
   // intention action : put the cursor on the widget
   // and click light bulb
   // or alt + enter
+
+  // if a variable is declared inside "build" function
+  // the variable will keep being created every time app hot-reloads.
+  int leftDiceNumber = 1;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -51,7 +55,7 @@ class _DicePageState extends State<DicePage> {
               onPressed: () {
                 print('left button got pressed');
               },
-              child: Image.asset('images/dice1.png'),
+              child: Image.asset('images/dice$leftDiceNumber.png'),
               style: TextButton.styleFrom(padding: EdgeInsets.all(16.0)),
             ),
           ),
