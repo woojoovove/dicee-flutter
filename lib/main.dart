@@ -15,7 +15,18 @@ void main() {
   );
 }
 
-class DicePage extends StatelessWidget {
+// StatelessWidget is immutable.
+// if you declare a mutable variable inside s StatelessWidget
+// you will see a warning saying statelesswidget is not meant to be changed.
+
+class DicePage extends StatefulWidget {
+  const DicePage({super.key});
+
+  @override
+  State<DicePage> createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
   // StatelessWidget의 "build" method는
   // 코드 저장 / hot reload를 할 때마다
   // refresh 되어 개발할 때 편리하다.
@@ -23,6 +34,10 @@ class DicePage extends StatelessWidget {
   // intention action : put the cursor on the widget
   // and click light bulb
   // or alt + enter
+
+  // if a variable is declared inside "build" function
+  // the variable will keep being created every time app hot-reloads.
+  int leftDiceNumber = 1;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -36,15 +51,28 @@ class DicePage extends StatelessWidget {
           // sibling끼리 가로나 세로를 차지할 비율(ratio) 설정 가능
           // default는 1:1:1...
           Expanded(
-              child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Image.asset('images/dice1.png'),
-          )),
+            child: TextButton(
+              onPressed: () {
+                // without "setState()"
+                // even if the variable `leftDiceNumber` changes
+                // the UI will not change
+                setState(() {
+                  leftDiceNumber = 5;
+                });
+              },
+              child: Image.asset('images/dice$leftDiceNumber.png'),
+              style: TextButton.styleFrom(padding: EdgeInsets.all(16.0)),
+            ),
+          ),
           Expanded(
-              child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Image.asset('images/dice1.png'),
-          )),
+            child: TextButton(
+              onPressed: () {
+                print('right button got pressed');
+              },
+              child: Image.asset('images/dice1.png'),
+              style: TextButton.styleFrom(padding: EdgeInsets.all(16.0)),
+            ),
+          ),
         ],
       ),
     );
