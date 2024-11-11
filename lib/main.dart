@@ -53,7 +53,12 @@ class _DicePageState extends State<DicePage> {
           Expanded(
             child: TextButton(
               onPressed: () {
-                print('left button got pressed');
+                // without "setState()"
+                // even if the variable `leftDiceNumber` changes
+                // the UI will not change
+                setState(() {
+                  leftDiceNumber = 5;
+                });
               },
               child: Image.asset('images/dice$leftDiceNumber.png'),
               style: TextButton.styleFrom(padding: EdgeInsets.all(16.0)),
