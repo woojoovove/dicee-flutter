@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -38,6 +39,7 @@ class _DicePageState extends State<DicePage> {
   // if a variable is declared inside "build" function
   // the variable will keep being created every time app hot-reloads.
   int leftDiceNumber = 1;
+  int rightDiceNumber = 1;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -52,29 +54,30 @@ class _DicePageState extends State<DicePage> {
           // default는 1:1:1...
           Expanded(
             child: TextButton(
-              onPressed: () {
-                // without "setState()"
-                // even if the variable `leftDiceNumber` changes
-                // the UI will not change
-                setState(() {
-                  leftDiceNumber = 5;
-                });
-              },
+              onPressed: rollDicee,
               child: Image.asset('images/dice$leftDiceNumber.png'),
               style: TextButton.styleFrom(padding: EdgeInsets.all(16.0)),
             ),
           ),
           Expanded(
             child: TextButton(
-              onPressed: () {
-                print('right button got pressed');
-              },
-              child: Image.asset('images/dice1.png'),
+              onPressed: rollDicee,
+              child: Image.asset('images/dice$rightDiceNumber.png'),
               style: TextButton.styleFrom(padding: EdgeInsets.all(16.0)),
             ),
           ),
         ],
       ),
     );
+  }
+
+  void rollDicee() {
+    // without "setState()"
+    // even if the variable `leftDiceNumber` changes
+    // the UI will not change
+    setState(() {
+      leftDiceNumber = Random().nextInt(6) + 1;
+      rightDiceNumber = Random().nextInt(6) + 1;
+    });
   }
 }
